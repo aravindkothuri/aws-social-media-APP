@@ -33,7 +33,8 @@ public class PostService {
     }
 
     public void likePost(Long id) {
-        postRepository.findById().ifPresent(post -> {
+        // CORRECTED: passing 'id' into findById
+        postRepository.findById(id).ifPresent(post -> {
             post.setLikes(post.getLikes() + 1);
             postRepository.save(post);
         });
